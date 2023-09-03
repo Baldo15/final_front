@@ -91,6 +91,46 @@
 //   });
   
   function validarEdad() {
-    console.log('Hola');
-    $("#formulario").remove();
+    event.preventDefault();
+    const nombre= $("#nombre").val();
+    const apellido= $("#apellido").val();
+    const tipo= $("#tipo_identificacion").val();
+    const identificacion= $("#identificacion").val();
+    const fecha= $("#fecha_nacimiento").val();
+    const lugar= $("#lugar_nacimiento").val();
+    console.log(identificacion);
+    if(nombre != '' && apellido != '' && identificacion != '' && lugar != '' )
+    {
+        $("#formulario").remove();
+        const fechaNacimiento = new Date(fecha);
+        const fechaActual = new Date();
+        const diferenciaMilisegundos = fechaActual - fechaNacimiento;
+        const edad = Math.floor(diferenciaMilisegundos / (365.25 * 24 * 60 * 60 * 1000));
+        console.log("entra")
+        if(edad >= '6' && edad <= '19')
+        {
+            if(edad >= '6' && edad <= '8')
+            {
+                alert('!FELICIDADES '+nombre+' '+apellido+' USTED A QUEDADO EN LA CATEGORIA PONYS!');
+            }else if(edad >= '9' && edad <= '11')
+            {
+                alert('!FELICIDADES '+nombre+' '+apellido+' USTED A QUEDADO EN LA CATEGORIA PREINFANTIL!');
+            }else if(edad >= '12' && edad <= '14')
+            {
+                alert('!FELICIDADES '+nombre+' '+apellido+' USTED A QUEDADO EN LA CATEGORIA INFANTIL!');
+            }else if(edad >= '14' && edad <= '15')
+            {
+                alert('!FELICIDADES '+nombre+' '+apellido+' USTED A QUEDADO EN LA CATEGORIA PREJUVENIL!');
+            }else if(edad >= '16' && edad <= '17')
+            {
+                alert('!FELICIDADES '+nombre+' '+apellido+' USTED A QUEDADO EN LA CATEGORIA JUVENIL!');
+            }else
+            {
+                alert('!FELICIDADES '+nombre+' '+apellido+' USTED A QUEDADO EN LA CATEGORIA SUB19!');
+            }
+        }else{
+            alert('!SU EDAD NO ESTA EN EL RANGO DE NUESTRAS CATEGORIAS!');
+        }
+        
+    }
   }
